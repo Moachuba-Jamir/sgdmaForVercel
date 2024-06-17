@@ -16,5 +16,9 @@ app.get("/hello", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
+app.get('/here', (req, res) => {
+    res.json({message: "Hello what is this "})
+})
+
 
 export default app;
