@@ -5,25 +5,19 @@ const app = express();
 const PORT = 8000
 app.use(cors());
 
+
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/', (req, res) => {
     res.json({message: "everything is working fine with vercel"})
 })
 
-app.get("/api/*", (req, res) => {
-  // Construct the path to your index.html file
-  const indexPath = path.join(__dirname, "public", "index.html");
-  // Send the index.html file as the response
-  res.sendFile(indexPath);
+app.get("/hello", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
-// app.listen(PORT, () => {
-//   console.log(`✅ Server is running on port ${PORT}`);
-// });
-
-module.exports = app;
-// `/api/hello.js`
-export default function hello(req, res) {
-  res.statusCode = 200;
-  res.json({ message: 'It works' });
-}
+app.listen(PORT, () => {
+  console.log(`✅ Server is running on port ${PORT}`);
+});
 
