@@ -12,5 +12,9 @@ app.listen(PORT, () => {
   console.log(`✅ Server is running on port ${PORT}`);
 });
 
-
+// `/api/hello.js`
+export default function hello(req, res) {
+  res.statusCode = 200;
+  res.json({ message: 'It works' });
+}
 
